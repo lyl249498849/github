@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0"/>
+        <!--删除默认的苹果工具栏和菜单栏，当我们需要显示工具栏和菜单栏时，这行meta就不用加了，默认就是显示。这个在safari中不起作用，当将网页加入主屏之后可以看到效果-->
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <!--ios顶部状态栏的样式 黑色-->
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <!--遇到数字不让转成电话号码格式-->
+        <meta content="telephone=no" name="format-detection">
+        <meta name="description" content="乐淘是中国最大的正品运动鞋、皮鞋网上专卖。乐淘网经营的品牌包括耐克、阿迪达斯、李宁、匡威等国内外知名品牌的篮球鞋,板鞋,休闲鞋,跑步鞋,帆布...">
+        <meta name="Keywords" content="乐淘 乐淘鞋城 买鞋子 上乐淘 运动鞋 篮球鞋 帆布鞋 跑步鞋 男鞋 女鞋 足球鞋 休闲鞋 凉鞋 户外鞋 布洛克 高跟鞋 单鞋 豆豆鞋 乐福鞋 牛津鞋 凉拖 皮鞋 短靴 长靴 登山鞋 徒步鞋 硫化鞋 训练鞋 溯溪鞋 越野鞋 板鞋 足球鞋 网球鞋 赛车鞋 雪地靴 马丁靴 商务 英伦">
+        <link type="image/x-icon" rel="shortcut icon" href="images/favicon.ico">
+        <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+        <link rel="stylesheet" href="assets/fa/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/searchList.css">
+        <title>搜索列表</title>
+	</head>
+	<body>
+		<div class="lt_container">
+			<header class="mui-bar mui-bar-nav">
+			    <h1 class="mui-title">搜索列表</h1>
+			    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			</header>
+			
+			<div class="lt_content">
+				<div class="lt_wrapper">
+					<div class="mui-scroll-wrapper">
+						<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+		                    <div class="mui-scroll">
+		                        <!--搜索表单-->
+		                        <div class="lt_search">
+		                            <form action="javascript:;">
+		                                <input class="search_input" type="search" placeholder="请输入搜索关键字"/>
+		                                <a class="search_btn" href="javascript:;">搜索</a>
+		                            </form>
+		                        </div>
+		                        <!--搜索排序-->
+		                        <div class="lt_order">
+		                            <a href="javascript:;">上架时间<span class="fa fa-angle-up"></span></a>
+		                            <a data-type="price" class="now" href="javascript:;">价格<span class="fa fa-angle-down"></span></a>
+		                            <a data-type="num" href="javascript:;">库存<span class="fa fa-angle-up"></span></a>
+		                            <a href="javascript:;">折扣<span class="fa fa-angle-up"></span></a>
+		                        </div>
+		                        <!--搜索列表-->
+		                        <div class="lt_product">
+		                            <a class="item" href="product.html?productId=3">
+		                                <img src="/mobile/images/detail.jpg"  alt=""/>
+		                                <span class="mui-ellipsis-2 mui-text-left">Sport飓风 Nike Kwazi 休闲运动鞋男 844839-002-001-100-400</span>
+		                                <p><span>&yen;499.1</span> <span>&yen;888.1</span></p>
+		                                <button class="mui-btn-blue">立即购买</button>
+		                            </a>  
+		                            <a class="item" href="product.html?productId=3">
+		                                <img src="/mobile/images/detail.jpg"  alt=""/>
+		                                <span class="mui-ellipsis-2 mui-text-left">Sport飓风 Nike Kwazi 休闲运动鞋男 844839-002-001-100-400</span>
+		                                <p><span>&yen;499.1</span> <span>&yen;888.1</span></p>
+		                                <button class="mui-btn-blue">立即购买</button>
+		                            </a> 
+		                            <a class="item" href="product.html?productId=3">
+		                                <img src="/mobile/images/detail.jpg"  alt=""/>
+		                                <span class="mui-ellipsis-2 mui-text-left">Sport飓风 Nike Kwazi 休闲运动鞋男 844839-002-001-100-400</span>
+		                                <p><span>&yen;499.1</span> <span>&yen;888.1</span></p>
+		                                <button class="mui-btn-blue">立即购买</button>
+		                            </a> 
+		                        </div>
+		                    </div>
+		                </div>
+	                </div>
+                </div>
+			</div>
+		</div>
+	</body>
+</html>
+
+<script type="text/html" id="productTpl">
+	{{each data as value i}}
+		<a class="item" href="product.html?productId={{value.id}}">
+            <img src="{{value.pic[0].picAddr}}"  alt=""/>
+            <span class="mui-ellipsis-2 mui-text-left">{{value.proName}}</span>
+            <p><span>&yen;{{value.price}}</span> <span>&yen;{{value.oldPrice}}</span></p>
+            <button class="mui-btn-blue">立即购买</button>
+        </a> 
+	{{/each}}	
+</script>
+
+
+<script src="assets/mui/js/mui.js"></script>
+<script src="assets/zepto/zepto.min.js"></script>
+<script src="assets/artTemplate/template.js"></script>
+<script src="js/common.js"></script>
+<script src="js/request.js"></script>
+<script src="js/searchList.js"></script>

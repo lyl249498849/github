@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0"/>
+        <!--删除默认的苹果工具栏和菜单栏，当我们需要显示工具栏和菜单栏时，这行meta就不用加了，默认就是显示。这个在safari中不起作用，当将网页加入主屏之后可以看到效果-->
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <!--ios顶部状态栏的样式 黑色-->
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <!--遇到数字不让转成电话号码格式-->
+        <meta content="telephone=no" name="format-detection">
+        <meta name="description" content="乐淘是中国最大的正品运动鞋、皮鞋网上专卖。乐淘网经营的品牌包括耐克、阿迪达斯、李宁、匡威等国内外知名品牌的篮球鞋,板鞋,休闲鞋,跑步鞋,帆布...">
+        <meta name="Keywords" content="乐淘 乐淘鞋城 买鞋子 上乐淘 运动鞋 篮球鞋 帆布鞋 跑步鞋 男鞋 女鞋 足球鞋 休闲鞋 凉鞋 户外鞋 布洛克 高跟鞋 单鞋 豆豆鞋 乐福鞋 牛津鞋 凉拖 皮鞋 短靴 长靴 登山鞋 徒步鞋 硫化鞋 训练鞋 溯溪鞋 越野鞋 板鞋 足球鞋 网球鞋 赛车鞋 雪地靴 马丁靴 商务 英伦">
+        <link type="image/x-icon" rel="shortcut icon" href="../images/favicon.ico">
+        <link rel="stylesheet" href="../assets/mui/css/mui.min.css">
+        <link rel="stylesheet" href="../assets/fa/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../css/common.css">
+        <link rel="stylesheet" href="../css/index.css">
+        <link rel="stylesheet" href="../css/cart.css">
+        <title>购物车</title>
+	</head>
+	<body>
+		<div class="lt_container">
+			<header class="mui-bar mui-bar-nav">
+			    <h1 class="mui-title">购物车</h1>
+			</header>
+			
+			<div class="lt_content">
+				<div class="lt_wrapper">
+					<div class="mui-scroll-wrapper">
+						<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+						    <div class="mui-scroll">
+						        <ul class="mui-table-view">
+					                <li class="mui-table-view-cell">
+					                    <div class="mui-slider-right mui-disabled">
+					                    	<a class="mui-btn mui-btn-blue mui-icon mui-icon-compose"></a>
+											<a class="mui-btn mui-btn-red mui-icon mui-icon-trash"></a>
+										</div>
+										<div class="mui-slider-handle">
+											<div class="mui-table-cell">
+				                                <div class="lt_proImg"><img src="/mobile/images/product.jpg"/></div>
+				                                <div class="lt_proInfo">
+				                                    <p class="name mui-ellipsis-2">匡威三星标1970s converse复刻 142334c 144757c三星标黑色高帮</p>
+				                                    <p>
+				                                        <span class="price">&yen;888.1</span>
+				                                        <span class="oldPrice">&yen;499.1</span>
+				                                        <span class="num">1双</span>
+				                                    </p>
+				                                    <p><span class="size">鞋码：50</span></p>
+				                                    <input type="checkbox"/>
+				                                </div>
+				                            </div>
+										</div>
+					                </li>
+					            </ul>
+						    </div>
+						</div>    
+					</div>
+                </div>
+				<!--lt_cart不需要区域滚动，所以不需要放在lt_content中-->
+				<div class="lt_cart">
+				    <div>订单总金额：&yen;<span>00.00</span></div>
+				    <a href="#">生成订单</a>
+				</div> 
+							
+			</div>
+			
+			<nav class="mui-bar mui-bar-tab">
+			    <a class="mui-tab-item" href="../index.html">
+			        <span class="mui-icon mui-icon-home"></span>
+			        <span class="mui-tab-label">首页</span>
+			    </a>
+			    <a class="mui-tab-item" href="../category.html">
+			        <span class="mui-icon mui-icon-bars"></span>
+			        <span class="mui-tab-label">分类</span>
+			    </a>
+			    <a class="mui-tab-item mui-active" href="cart.html">
+			        <span class="mui-icon fa fa-shopping-cart"></span>
+			        <span class="mui-tab-label">购物车</span>
+			    </a>
+			    <a class="mui-tab-item" href="index.html">
+			        <span class="mui-icon fa fa-user"></span>
+			        <span class="mui-tab-label">个人中心</span>
+			    </a>
+			</nav>
+		</div>
+	</body>
+</html>
+
+
+<script src="../assets/mui/js/mui.js"></script>
+<script src="../assets/zepto/zepto.min.js"></script>
+<script src="../assets/artTemplate/template.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/request.js"></script>
+<script src="../js/user/cart.js"></script>
+
+
+<script type="text/template" id="edit">
+	    <div class="lt_cart_edit">
+	        <strong>尺码：</strong>
+	        {{each productsize as value}}	        
+	       		<span class="{{value==size?'now':''}}" >{{value}}</span>
+	        {{/each}}
+	    </div>
+	    <div class="lt_cart_edit">
+	        <strong>数量：</strong>
+	        <div class="mui-numbox" data-numbox-min="1" data-numbox-max="{{productnum}}">
+	            <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+	            <input class="mui-input-numbox" type="number" value="{{num}}">
+	            <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+	        </div>
+	    </div>
+	</script>
+
+
+<script type="text/html" id="carttemplate">
+	{{if data.length == 0}}
+		 <div>购物车没有数据</div>
+	{{else}}
+		{{each data as value i}}
+		  <li class="mui-table-view-cell">
+		    <div class="mui-slider-right mui-disabled">
+		    	<a  data-id="{{value.id}}"
+		    		data-size="{{value.size}}"
+		    		data-num ="{{value.num}}"
+		    		data-productSize ="{{value.productSize}}"
+		    		class="mui-btn mui-btn-blue mui-icon mui-icon-compose"></a>
+				<a data-id="{{value.id}}"
+					class="mui-btn mui-btn-red mui-icon mui-icon-trash"></a>
+			</div>
+			<div class="mui-slider-handle">
+				<div class="mui-table-cell">
+		            <div class="lt_proImg"><img src="{{value.pic[0].picAddr}}"/></div>
+		            <div class="lt_proInfo">
+		                <p class="name mui-ellipsis-2">{{value.proName}}</p>
+		                <p>
+		                    <span class="price">&yen;{{value.price}}</span>
+		                    <span class="oldPrice">&yen;{{value.oldPrice}}</span>
+		                    <span class="num">{{value.num}}双</span>
+		                </p>
+		                <p><span class="size">鞋码：{{value.size}}</span></p>
+		                <input data-id="{{value.id}}"
+		                	   data-num="{{value.num}}"
+		                	   data-price="{{value.price}}"
+		                	   type="checkbox"/>
+		            </div>
+		        </div>
+			</div>
+		  </li>
+		{{/each}}
+	{{/if}}
+</script>
+
+
+<script>
+if(('standalone' in window.navigator)&&window.navigator.standalone){
+        var noddy,remotes=false;
+        document.addEventListener('click',function(event){
+                noddy=event.target;
+                while(noddy.nodeName!=='A'&&noddy.nodeName!=='HTML') noddy=noddy.parentNode;
+                if('href' in noddy&&noddy.href.indexOf('http')!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){
+                        event.preventDefault();
+                        document.location.href=noddy.href;
+                }
+        },false);
+}
+</script>

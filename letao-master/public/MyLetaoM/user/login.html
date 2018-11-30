@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0"/>
+        <!--删除默认的苹果工具栏和菜单栏，当我们需要显示工具栏和菜单栏时，这行meta就不用加了，默认就是显示。这个在safari中不起作用，当将网页加入主屏之后可以看到效果-->
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <!--ios顶部状态栏的样式 黑色-->
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <!--遇到数字不让转成电话号码格式-->
+        <meta content="telephone=no" name="format-detection">
+        <meta name="description" content="乐淘是中国最大的正品运动鞋、皮鞋网上专卖。乐淘网经营的品牌包括耐克、阿迪达斯、李宁、匡威等国内外知名品牌的篮球鞋,板鞋,休闲鞋,跑步鞋,帆布...">
+        <meta name="Keywords" content="乐淘 乐淘鞋城 买鞋子 上乐淘 运动鞋 篮球鞋 帆布鞋 跑步鞋 男鞋 女鞋 足球鞋 休闲鞋 凉鞋 户外鞋 布洛克 高跟鞋 单鞋 豆豆鞋 乐福鞋 牛津鞋 凉拖 皮鞋 短靴 长靴 登山鞋 徒步鞋 硫化鞋 训练鞋 溯溪鞋 越野鞋 板鞋 足球鞋 网球鞋 赛车鞋 雪地靴 马丁靴 商务 英伦">
+        <link type="image/x-icon" rel="shortcut icon" href="../images/favicon.ico">
+        <link rel="stylesheet" href="../assets/mui/css/mui.min.css">
+        <link rel="stylesheet" href="../assets/fa/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../css/common.css">
+        <link rel="stylesheet" href="../css/index.css">
+        <title>用户登录</title>
+	</head>
+	<body>
+		<div class="lt_container">
+			<header class="mui-bar mui-bar-nav">
+			    <h1 class="mui-title">用户登录</h1>
+			</header>
+			
+			<div class="lt_content">
+				<div class="lt_wrapper">
+					<form class="mui-input-group">
+					    <div class="mui-input-row">
+					        <label>用户名</label>
+					    	<input name="username" type="text" class="mui-input-clear" placeholder="请输入用户名">
+					    </div>
+					    <div class="mui-input-row">
+	                        <label>密码</label>
+	                        <input name="password" type="password" class="mui-input-password"  placeholder="请输入密码" >
+					    </div>
+					    
+					    <div class="mui-button-row">
+					        <button type="button" class="mui-btn mui-btn-primary" >确认</button>
+					        <button type="button" class="mui-btn mui-btn-danger" >取消</button>
+					    </div>
+					</form>
+               		 <div class="mui-text-right">
+	                    <a class="mui-btn mui-btn-link" href="#">免费注册</a>
+	                </div>
+				</div>
+			</div>
+			
+			<nav class="mui-bar mui-bar-tab">
+			    <a class="mui-tab-item" href="../index.html">
+			        <span class="mui-icon mui-icon-home"></span>
+			        <span class="mui-tab-label">首页</span>
+			    </a>
+			    <a class="mui-tab-item" href="../category.html">
+			        <span class="mui-icon mui-icon-bars"></span>
+			        <span class="mui-tab-label">分类</span>
+			    </a>
+			    <a class="mui-tab-item" href="cart.html">
+			        <span class="mui-icon fa fa-shopping-cart"></span>
+			        <span class="mui-tab-label">购物车</span>
+			    </a>
+			    <a class="mui-tab-item" href="index.html">
+			        <span class="mui-icon fa fa-user"></span>
+			        <span class="mui-tab-label">个人中心</span>
+			    </a>
+			</nav>
+		</div>
+	</body>
+</html>
+
+<script src="../assets/mui/js/mui.js"></script>
+<script src="../assets/zepto/zepto.min.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/request.js"></script>
+<script src="../js/user/login.js"></script>
